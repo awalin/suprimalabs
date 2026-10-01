@@ -49,38 +49,42 @@ const initials = (n: string) => n.split(" ").map((p) => p[0]).join("").slice(0, 
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b bg-card/60 backdrop-blur sticky top-0 z-10">
+    <div className="theme-vibrant min-h-screen bg-background text-foreground">
+      <header className="border-b bg-card/70 backdrop-blur sticky top-0 z-10">
         <div className="container flex h-16 items-center justify-between">
           <a href="#top" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">S</div>
+            <div className="h-8 w-8 rounded-lg bg-gradient-primary text-primary-foreground flex items-center justify-center font-bold text-sm shadow-glow">S</div>
             <span className="font-semibold tracking-tight">SuprimaLabs</span>
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#mission" className="hover:text-foreground">Mission</a>
-            <a href="#products" className="hover:text-foreground">Pulse Journal</a>
-            <a href="#approach" className="hover:text-foreground">Approach</a>
-            <a href="#team" className="hover:text-foreground">Team</a>
-            <a href="#careers" className="hover:text-foreground">Careers</a>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
+            <a href="#mission" className="hover:text-primary">Mission</a>
+            <a href="#products" className="hover:text-primary">Pulse Journal</a>
+            <a href="#approach" className="hover:text-primary">Approach</a>
+            <a href="#team" className="hover:text-primary">Team</a>
+            <a href="#careers" className="hover:text-primary">Careers</a>
+            <a href="#contact" className="hover:text-primary">Contact</a>
           </nav>
-          <Button asChild size="sm"><Link to="/pulse">Explore Pulse Journal</Link></Button>
+          <Button asChild size="sm" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><Link to="/pulse">Explore Pulse Journal</Link></Button>
         </div>
       </header>
 
       <main id="top">
-        <section className="container py-24 md:py-32 max-w-4xl">
-          <p className="text-sm font-medium text-primary mb-4">SuprimaLabs · Health technology</p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-[1.05] mb-6">
-            Helping people understand and advocate for their own health.
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mb-8">
-            We build calm, intelligent tools that turn scattered health moments — symptoms, medicines, visits and lab results —
-            into a story people can act on, together with their doctors. Our first focus: women's health.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg"><Link to="/pulse">Explore Pulse Journal <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
-            <Button asChild size="lg" variant="outline"><a href="#mission">Our mission</a></Button>
+        <section className="relative overflow-hidden bg-hero-vibrant">
+          <div className="container py-24 md:py-32 max-w-4xl">
+            <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-foreground mb-6">
+              <Sparkles className="h-4 w-4" /> SuprimaLabs · Health technology
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-[1.05] mb-6">
+              Your health. Your voice. <span className="text-gradient">Your power.</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mb-8">
+              We build joyful, intelligent tools that turn scattered health moments — symptoms, medicines, visits and lab results —
+              into a story you can act on, together with your doctors. Our first focus: women's health.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><Link to="/pulse">Explore Pulse Journal <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full border-primary/40 hover:bg-primary/10"><a href="#mission">Our mission</a></Button>
+            </div>
           </div>
         </section>
 
@@ -110,7 +114,7 @@ export default function Home() {
 
         <section id="products" className="container py-20">
           <h2 className="text-sm font-medium text-primary mb-3">Flagship product</h2>
-          <div className="rounded-2xl border bg-card p-8 md:p-10 grid md:grid-cols-2 gap-10 items-center">
+          <div className="rounded-3xl border bg-card p-8 md:p-10 shadow-glow grid md:grid-cols-2 gap-10 items-center">
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -130,7 +134,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               {pulseFeatures.map(({ icon: Icon, t }) => (
-                <div key={t} className="rounded-xl bg-muted p-4 text-sm flex items-center gap-2">
+                <div key={t} className="rounded-xl bg-secondary p-4 text-sm font-medium flex items-center gap-2">
                   <Icon className="h-4 w-4 text-primary shrink-0" /> {t}
                 </div>
               ))}
@@ -214,11 +218,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="container py-20 text-center max-w-2xl">
+        <section id="contact" className="bg-hero-vibrant"><div className="container py-20 text-center max-w-2xl">
           <h2 className="text-3xl font-semibold mb-4">Let's talk</h2>
           <p className="text-muted-foreground mb-8">Partners, clinicians, researchers and investors — we'd love to hear from you.</p>
-          <Button asChild size="lg"><a href="mailto:hello@suprimalabs.com"><Mail className="h-4 w-4 mr-2" /> hello@suprimalabs.com</a></Button>
-        </section>
+          <Button asChild size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><a href="mailto:hello@suprimalabs.com"><Mail className="h-4 w-4 mr-2" /> hello@suprimalabs.com</a></Button>
+        </div></section>
       </main>
 
       <footer className="border-t">
