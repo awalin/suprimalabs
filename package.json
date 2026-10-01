@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
+    "build:site": "vite build --mode site && mv dist-site/site.html dist-site/index.html && touch dist-site/.nojekyll",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
