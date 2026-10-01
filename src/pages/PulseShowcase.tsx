@@ -33,9 +33,9 @@ export default function PulseShowcase() {
 
       <section className="container py-20 max-w-3xl text-center">
         <span className="rounded-full bg-accent px-3 py-1 text-xs font-medium text-accent-foreground">Women's health</span>
-        <h1 className="text-4xl md:text-5xl font-semibold leading-tight mt-5 mb-5">A health journal that helps women get heard.</h1>
+        <h1 className="text-4xl md:text-5xl font-semibold leading-tight mt-5 mb-5">A health journal that helps us to get the help we deserve.</h1>
         <p className="text-lg text-muted-foreground">
-          Track cycles, perimenopause, pregnancy, pain and mood in your own words — and turn them into evidence your doctor can act on.
+          Track your health in your own words, turn them into evidence your doctor can act on.
         </p>
       </section>
 
