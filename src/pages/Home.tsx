@@ -41,7 +41,7 @@ const advisors = [
 
 const milestones = [
   ["Now", "Pulse Journal demo live with journaling, visit prep and record import."],
-  ["Next", "Pilot study with women navigating perimenopause and chronic symptoms."],
+  // ["Next", "Pilot study with women navigating perimenopause and chronic symptoms."],
   ["Later", "Mobile apps, caregiver sharing and new products for under-served conditions."],
 ];
 
@@ -61,9 +61,9 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#mission" className="hover:text-medical">Mission</a>
             <a href="#products" className="hover:text-medical">Pulse Journal</a>
-            <a href="#approach" className="hover:text-medical">Approach</a>
+            {/*<a href="#approach" className="hover:text-medical">Approach</a>*/}
             <a href="#team" className="hover:text-medical">Team</a>
-            <a href="#careers" className="hover:text-medical">Careers</a>
+            {/*<a href="#careers" className="hover:text-medical">Careers</a>*/}
             <a href="#contact" className="hover:text-medical">Contact</a>
           </nav>
           <Button asChild size="sm" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><Link to="/pulse">Explore Pulse Journal</Link></Button>
@@ -160,35 +160,35 @@ export default function Home() {
         {/*  <p className="text-sm text-muted-foreground mt-4">More products in development.</p>*/}
         {/*</section>*/}
 
-        <section id="approach" className="border-t bg-card/40">
-          <div className="container py-8">
-            <h2 className="text-sm font-medium text-medical mb-2">How we work</h2>
-            {/*<p className="text-2xl font-semibold mb-6 max-w-2xl">Research-led, patient-tested, evidence-linked.</p>*/}
-            <div className="grid md:grid-cols-3 gap-4">
-              {approach.map(({ icon: Icon, t, d }) => (
-                <div key={t} className="rounded-xl border bg-card p-5">
-                  <Icon className="h-6 w-6 text-medical mb-2" />
-                  <h3 className="font-semibold mb-1">{t}</h3>
-                  <p className="text-sm text-muted-foreground">{d}</p>
-                </div>
-              ))}
-            </div>
-            <ol className="mt-6 grid gap-5 md:grid-cols-3 md:gap-6">
-              {milestones.map(([k, d], i) => (
-                <li key={k}>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-medical shrink-0" />
-                    {i < milestones.length - 1 && (
-                      <span className="hidden md:block h-px flex-1 bg-medical/25" />
-                    )}
-                  </div>
-                  <div className="font-semibold">{k}</div>
-                  <p className="text-sm text-muted-foreground">{d}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
+        {/*<section id="approach" className="border-t bg-card/40">*/}
+        {/*  <div className="container py-8">*/}
+        {/*    <h2 className="text-sm font-medium text-medical mb-2">How we work</h2>*/}
+        {/*    /!*<p className="text-2xl font-semibold mb-6 max-w-2xl">Research-led, patient-tested, evidence-linked.</p>*!/*/}
+        {/*    <div className="grid md:grid-cols-3 gap-4">*/}
+        {/*      {approach.map(({ icon: Icon, t, d }) => (*/}
+        {/*        <div key={t} className="rounded-xl border bg-card p-5">*/}
+        {/*          <Icon className="h-6 w-6 text-medical mb-2" />*/}
+        {/*          <h3 className="font-semibold mb-1">{t}</h3>*/}
+        {/*          <p className="text-sm text-muted-foreground">{d}</p>*/}
+        {/*        </div>*/}
+        {/*      ))}*/}
+        {/*    </div>*/}
+        {/*    <ol className="mt-6 grid gap-5 md:grid-cols-3 md:gap-6">*/}
+        {/*      {milestones.map(([k, d], i) => (*/}
+        {/*        <li key={k}>*/}
+        {/*          <div className="flex items-center gap-3 mb-2">*/}
+        {/*            <span className="h-2.5 w-2.5 rounded-full bg-medical shrink-0" />*/}
+        {/*            {i < milestones.length - 1 && (*/}
+        {/*              <span className="hidden md:block h-px flex-1 bg-medical/25" />*/}
+        {/*            )}*/}
+        {/*          </div>*/}
+        {/*          <div className="font-semibold">{k}</div>*/}
+        {/*          <p className="text-sm text-muted-foreground">{d}</p>*/}
+        {/*        </li>*/}
+        {/*      ))}*/}
+        {/*    </ol>*/}
+        {/*  </div>*/}
+        {/*</section>*/}
 
         <section id="team" className="container py-8">
           <h2 className="text-sm font-medium text-medical mb-2">The people behind it</h2>
