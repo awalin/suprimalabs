@@ -11,3 +11,4 @@ dist-ssr/
 .DS_Store
 *.log
 npm-debug.log*
+/health-whisperer-ai/

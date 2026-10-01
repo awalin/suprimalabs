@@ -77,6 +77,11 @@
     --ring: 26 95% 58%;
   }
 
+  .text-medical {
+    --tw-text-opacity: 1;
+    color: hsl(var(--medical) / var(--tw-text-opacity, 1));
+}
+
   /* Vibrant, empowering palette for the SuprimaLabs home page */
   .theme-vibrant {
     --background: 180 30% 98%;
