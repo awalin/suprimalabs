@@ -20,19 +20,17 @@ const approach = [
 ];
 
 const pulseFeatures = [
-  { icon: BookOpen, t: "Cycle & symptom journal" },
-  { icon: HandHeart, t: "Perimenopause & menopause" },
-  { icon: Stethoscope, t: "OB-GYN & specialists nearby" },
+  { icon: BookOpen, t: "Symptoms journal" },
+  { icon: Stethoscope, t: "Specialists nearby" },
   { icon: ClipboardList, t: "Visit prep briefs" },
   { icon: FolderOpen, t: "Doctor's notes explained" },
   { icon: Sparkles, t: "Patterns & weekly summary" },
+  { icon: Sparkles, t: "Family history summary" }
 ];
 
 const team = [
-  { name: "Awalin Sopan", role: "Founder & CEO", bio: "Leads product, research and strategy. Focused on giving patients — especially women — a clearer voice in their care." },
-  { name: "Clinical Lead", role: "Women's health clinician", bio: "Guides medical accuracy, safety review and the evidence behind every suggestion.", open: true },
-  { name: "Engineering Lead", role: "AI & platform", bio: "Owns the journal engine, record imports and privacy-first infrastructure.", open: true },
-  { name: "Design Lead", role: "Product & research design", bio: "Runs user studies and shapes a calm, trauma-informed experience.", open: true },
+  { name: "Awalin Sopan", role: "Founder, CEO, Head of AI", bio: "Leads product, research and strategy. Focused on giving patients — especially women — a clearer voice in their care." },
+  { name: "Anika Sharin", role: "COO, Head of MedTech", bio: "Guides medical policy regulation, safety review and the evidence behind every suggestion."}
 ];
 
 const advisors = [
@@ -103,7 +101,7 @@ export default function Home() {
               </div>
               <p className="text-muted-foreground mb-5 text-sm">
                 A health journal built for women. Women's symptoms are too often dismissed, under-researched and misdiagnosed —
-                Pulse helps you track cycles, perimenopause, pregnancy, pain and mood in your own words, spot patterns, and
+                Pulse helps you correlate your symptopms in physical and mental health, pain and mood in your own words, spot patterns, and
                 walk into every appointment with evidence that gets you heard.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -122,7 +120,7 @@ export default function Home() {
         </section>
 
         <section id="mission" className="border-t bg-card/40">
-          <div className="container py-20 grid md:grid-cols-2 gap-12">
+          <div className="container py-10 grid md:grid-cols-2 gap-12">
             <div>
               <h2 className="text-sm font-medium text-medical mb-3">Our mission</h2>
               <p className="text-2xl md:text-3xl font-semibold leading-snug">
@@ -145,91 +143,98 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container py-16">
-          <h2 className="text-sm font-medium text-medical mb-3">Why women's health</h2>
-          <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
-            {[
-              ["Dismissed for too long", "Women wait longer for diagnosis across hundreds of conditions."],
-              ["Under-researched", "Women were routinely left out of clinical trials until the 1990s."],
-              ["Life stages overlooked", "Periods, pregnancy and menopause shape health but are rarely tracked together."],
-            ].map(([t, d]) => (
-              <div key={t} className="rounded-xl border border-medical/20 bg-medical/5 p-5">
-                <div className="font-semibold mb-1">{t}</div>
-                <p className="text-muted-foreground">{d}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-muted-foreground mt-4">More products in development.</p>
-        </section>
+        {/*<section className="container py-16">*/}
+        {/*  <h2 className="text-sm font-medium text-medical mb-3">Why women's health</h2>*/}
+        {/*  <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">*/}
+        {/*    {[*/}
+        {/*      ["Dismissed for too long", "Women wait longer for diagnosis across hundreds of conditions."],*/}
+        {/*      ["Under-researched", "Women were routinely left out of clinical trials until the 1990s."],*/}
+        {/*      ["Life stages overlooked", "Periods, pregnancy and menopause shape health but are rarely tracked together."],*/}
+        {/*    ].map(([t, d]) => (*/}
+        {/*      <div key={t} className="rounded-xl border border-medical/20 bg-medical/5 p-5">*/}
+        {/*        <div className="font-semibold mb-1">{t}</div>*/}
+        {/*        <p className="text-muted-foreground">{d}</p>*/}
+        {/*      </div>*/}
+        {/*    ))}*/}
+        {/*  </div>*/}
+        {/*  <p className="text-sm text-muted-foreground mt-4">More products in development.</p>*/}
+        {/*</section>*/}
 
         <section id="approach" className="border-t bg-card/40">
-          <div className="container py-20">
-            <h2 className="text-sm font-medium text-medical mb-3">How we work</h2>
-            <p className="text-2xl font-semibold mb-10 max-w-2xl">Research-led, patient-tested, evidence-linked.</p>
-            <div className="grid md:grid-cols-3 gap-6">
+          <div className="container py-8">
+            <h2 className="text-sm font-medium text-medical mb-2">How we work</h2>
+            {/*<p className="text-2xl font-semibold mb-6 max-w-2xl">Research-led, patient-tested, evidence-linked.</p>*/}
+            <div className="grid md:grid-cols-3 gap-4">
               {approach.map(({ icon: Icon, t, d }) => (
-                <div key={t} className="rounded-xl border bg-card p-6">
-                  <Icon className="h-6 w-6 text-medical mb-3" />
+                <div key={t} className="rounded-xl border bg-card p-5">
+                  <Icon className="h-6 w-6 text-medical mb-2" />
                   <h3 className="font-semibold mb-1">{t}</h3>
                   <p className="text-sm text-muted-foreground">{d}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-10 grid md:grid-cols-3 gap-4">
-              {milestones.map(([k, d]) => (
-                <div key={k} className="flex gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-medical shrink-0 mt-0.5" />
-                  <div><div className="font-semibold">{k}</div><p className="text-sm text-muted-foreground">{d}</p></div>
-                </div>
+            <ol className="mt-6 grid gap-5 md:grid-cols-3 md:gap-6">
+              {milestones.map(([k, d], i) => (
+                <li key={k}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-medical shrink-0" />
+                    {i < milestones.length - 1 && (
+                      <span className="hidden md:block h-px flex-1 bg-medical/25" />
+                    )}
+                  </div>
+                  <div className="font-semibold">{k}</div>
+                  <p className="text-sm text-muted-foreground">{d}</p>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
         </section>
 
-        <section id="team" className="container py-20">
-          <h2 className="text-sm font-medium text-medical mb-3">The people behind it</h2>
-          <p className="text-2xl font-semibold mb-10 max-w-2xl">A small team of researchers, clinicians, designers and engineers who care about patient voice.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section id="team" className="container py-8">
+          <h2 className="text-sm font-medium text-medical mb-2">The people behind it</h2>
+          {/*<p className="text-2xl font-semibold mb-6 max-w-2xl">A small team of researchers, clinicians, designers and engineers who care about patient voice.</p>*/}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
             {team.map((p) => (
-              <div key={p.name} className="rounded-xl border bg-card p-6">
-                <div className="h-14 w-14 rounded-full bg-medical/10 text-medical flex items-center justify-center font-semibold mb-4">
-                  {p.open ? <Users className="h-6 w-6" /> : initials(p.name)}
+              <div key={p.name} className="rounded-xl border bg-card p-5">
+                <div className="h-12 w-12 rounded-full bg-medical/10 text-medical flex items-center justify-center font-semibold mb-3">
+                 <Users className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold">{p.name}</h3>
                 <p className="text-sm text-medical mb-2">{p.role}</p>
                 <p className="text-sm text-muted-foreground">{p.bio}</p>
-                {p.open && <a href="#careers" className="mt-3 inline-block text-xs font-medium text-medical hover:underline">Joining soon · We're hiring</a>}
               </div>
             ))}
           </div>
-          <div className="mt-10 grid md:grid-cols-3 gap-4">
-            {advisors.map(({ t, d }) => (
-              <div key={t} className="rounded-xl bg-muted p-5">
-                <div className="font-semibold mb-1">{t}</div>
-                <p className="text-sm text-muted-foreground">{d}</p>
-              </div>
-            ))}
-          </div>
+          {/*<div className="mt-10 grid md:grid-cols-3 gap-4">*/}
+          {/*  {advisors.map(({ t, d }) => (*/}
+          {/*    <div key={t} className="rounded-xl bg-muted p-5">*/}
+          {/*      <div className="font-semibold mb-1">{t}</div>*/}
+          {/*      <p className="text-sm text-muted-foreground">{d}</p>*/}
+          {/*    </div>*/}
+          {/*  ))}*/}
+          {/*</div>*/}
         </section>
 
-        <section id="careers" className="border-t bg-card/40">
-          <div className="container py-20 grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h2 className="text-sm font-medium text-medical mb-3">Careers</h2>
-              <p className="text-2xl font-semibold mb-3">Help women get heard.</p>
-              <p className="text-muted-foreground">We're looking for a women's health clinician, an AI engineer and a product designer who want their work to matter.</p>
-            </div>
-            <div className="flex md:justify-end">
-              <Button asChild size="lg" variant="outline"><a href="#contact"><Briefcase className="h-4 w-4 mr-2" /> Get in touch</a></Button>
-            </div>
-          </div>
-        </section>
+        {/*<section id="careers" className="border-t bg-card/40">*/}
+        {/*  <div className="container py-20 grid md:grid-cols-2 gap-10 items-center">*/}
+        {/*    <div>*/}
+        {/*      <h2 className="text-sm font-medium text-medical mb-3">Careers</h2>*/}
+        {/*      <p className="text-2xl font-semibold mb-3">Help women get heard.</p>*/}
+        {/*      <p className="text-muted-foreground">We want to hear from you! If you are a potential user, a women's health clinician, an AI engineer or a product designer who want their work to matter.</p>*/}
+        {/*    </div>*/}
+        {/*    <div className="flex md:justify-end">*/}
+        {/*      <Button asChild size="lg" variant="outline"><a href="#contact"><Briefcase className="h-4 w-4 mr-2" /> Get in touch</a></Button>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*</section>*/}
 
-        <section id="contact" className="bg-hero-vibrant"><div className="container py-20 text-center max-w-2xl">
+        <section id="contact" className="bg-hero-vibrant">
+          <div className="container minor-sections text-center max-w-2xl">
           <h2 className="text-3xl font-semibold mb-4">Let's talk</h2>
           <p className="text-muted-foreground mb-8">Partners, clinicians, researchers and investors — we'd love to hear from you.</p>
           <ContactForm />
-        </div></section>
+        </div>
+        </section>
       </main>
 
       <footer className="border-t">
