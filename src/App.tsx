@@ -18,6 +18,10 @@ import Connections from "./pages/Connections";
 import Ehr from "./pages/Ehr";
 import EhrCallback from "./pages/EhrCallback";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Account from "./pages/Account";
+import ConsentGate from "@/components/ConsentGate";
 import AppLayout from "@/components/AppLayout";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 
@@ -28,15 +32,19 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pulse" element={<PulseShowcase />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route
             element={
               <ProtectedRoute>
-                <AppLayout />
+                <ConsentGate>
+                  <AppLayout />
+                </ConsentGate>
               </ProtectedRoute>
             }
           >
@@ -50,6 +58,7 @@ const App = () => (
             <Route path="/documents" element={<Documents />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/ehr" element={<Ehr />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/ehr/callback" element={<EhrCallback />} />
           </Route>
           <Route path="*" element={<NotFound />} />

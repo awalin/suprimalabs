@@ -1,3 +1,4 @@
+import { appUrl } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -38,7 +39,7 @@ export default function Auth() {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: `${window.location.origin}/journal`, data: { display_name: name } },
+      options: { emailRedirectTo: appUrl("/journal"), data: { display_name: name } },
     });
     setLoading(false);
     if (error) return toast.error(error.message);

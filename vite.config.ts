@@ -7,7 +7,6 @@ import { componentTagger } from "lovable-tagger";
 // `--mode site` builds only the marketing page (src/site.tsx) for GitHub Pages,
 // so none of the demo app is reachable from the published site.
 export default defineConfig(({ mode }) => ({
-  base: mode === "site" ? "/suprimalabs/" : "/",
   build: mode === "site" ? { outDir: "dist-site", rollupOptions: { input: "site.html" } } : {},
   server: {
     host: "::",

@@ -94,6 +94,36 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          emailed_at: string | null
+          id: string
+          message: string
+          name: string
+          topic: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          emailed_at?: string | null
+          id?: string
+          message: string
+          name: string
+          topic?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          emailed_at?: string | null
+          id?: string
+          message?: string
+          name?: string
+          topic?: string | null
+        }
+        Relationships: []
+      }
       ehr_connections: {
         Row: {
           access_token: string | null
@@ -379,6 +409,8 @@ export type Database = {
           demographics: Json | null
           display_name: string | null
           family_history: Json | null
+          health_consent_at: string | null
+          health_consent_version: string | null
           id: string
           last_checkin_date: string | null
           reminder_time: string | null
@@ -390,6 +422,8 @@ export type Database = {
           demographics?: Json | null
           display_name?: string | null
           family_history?: Json | null
+          health_consent_at?: string | null
+          health_consent_version?: string | null
           id: string
           last_checkin_date?: string | null
           reminder_time?: string | null
@@ -401,6 +435,8 @@ export type Database = {
           demographics?: Json | null
           display_name?: string | null
           family_history?: Json | null
+          health_consent_at?: string | null
+          health_consent_version?: string | null
           id?: string
           last_checkin_date?: string | null
           reminder_time?: string | null

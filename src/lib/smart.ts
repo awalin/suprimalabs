@@ -23,7 +23,8 @@ async function challenge(verifier: string) {
   return b64url(new Uint8Array(digest));
 }
 
-export const redirectUri = () => `${window.location.origin}/ehr/callback`;
+import { appUrl } from "@/lib/utils";
+export const redirectUri = () => appUrl("/ehr/callback");
 
 export async function discover(fhirBaseUrl: string) {
   const base = fhirBaseUrl.replace(/\/$/, "");

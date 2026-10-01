@@ -5,8 +5,10 @@
 /* Calm clinical design system */
 @layer base {
   :root {
-    --background: 200 30% 98%;
-    --foreground: 215 30% 18%;
+    --medical: 178 70% 32%;
+    --medical-foreground: 0 0% 100%;
+    --background: 180 30% 98%;
+    --foreground: 195 45% 14%;
 
     --card: 0 0% 100%;
     --card-foreground: 215 30% 18%;
@@ -14,18 +16,20 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 30% 18%;
 
-    --primary: 195 60% 38%;
+    /* Orange = actions/buttons; teal (--medical, accent, sidebar) = medical identity */
+    --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 195 55% 94%;
+    --primary-glow: 38 98% 56%;
+    --primary-soft: 175 45% 93%;
 
-    --secondary: 205 30% 94%;
+    --secondary: 175 45% 93%;
     --secondary-foreground: 215 30% 22%;
 
     --muted: 205 25% 95%;
     --muted-foreground: 215 15% 45%;
 
-    --accent: 165 45% 92%;
-    --accent-foreground: 170 50% 22%;
+    --accent: 175 45% 92%;
+    --accent-foreground: 178 70% 24%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -33,20 +37,20 @@
     --success: 150 50% 40%;
     --warning: 35 85% 55%;
 
-    --border: 210 25% 90%;
-    --input: 210 25% 90%;
-    --ring: 195 60% 45%;
+    --border: 180 20% 88%;
+    --input: 180 20% 88%;
+    --ring: 24 95% 53%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 200 30% 98%;
     --sidebar-foreground: 215 30% 25%;
-    --sidebar-primary: 195 60% 38%;
+    --sidebar-primary: 178 70% 32%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 205 30% 94%;
     --sidebar-accent-foreground: 215 30% 22%;
     --sidebar-border: 210 25% 90%;
-    --sidebar-ring: 195 60% 45%;
+    --sidebar-ring: 178 70% 32%;
   }
 
   .dark {
@@ -56,9 +60,10 @@
     --card-foreground: 200 20% 95%;
     --popover: 215 30% 13%;
     --popover-foreground: 200 20% 95%;
-    --primary: 195 60% 55%;
-    --primary-foreground: 215 30% 10%;
-    --primary-soft: 195 40% 20%;
+    --medical: 178 60% 45%;
+    --primary: 26 95% 58%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 178 40% 18%;
     --secondary: 215 25% 18%;
     --secondary-foreground: 200 20% 95%;
     --muted: 215 25% 18%;
@@ -69,40 +74,44 @@
     --destructive-foreground: 0 0% 100%;
     --border: 215 25% 22%;
     --input: 215 25% 22%;
-    --ring: 195 60% 55%;
+    --ring: 26 95% 58%;
   }
 
   /* Vibrant, empowering palette for the SuprimaLabs home page */
   .theme-vibrant {
-    --background: 30 100% 98%;
-    --foreground: 280 35% 16%;
+    --background: 180 30% 98%;
+    --foreground: 195 45% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 280 35% 16%;
-    --primary: 335 82% 52%;
+    --card-foreground: 195 45% 14%;
+    /* Orange = actions/buttons */
+    --primary: 24 95% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 18 95% 60%;
-    --secondary: 45 100% 92%;
-    --secondary-foreground: 280 35% 18%;
-    --muted: 320 60% 96%;
-    --muted-foreground: 280 12% 40%;
-    --accent: 45 100% 85%;
-    --accent-foreground: 25 80% 28%;
-    --sunny: 45 100% 60%;
-    --violet: 265 75% 60%;
-    --border: 330 40% 90%;
-    --ring: 335 82% 52%;
-    --gradient-hero: radial-gradient(60% 60% at 15% 20%, hsl(var(--sunny) / 0.35), transparent 70%),
-      radial-gradient(50% 60% at 85% 10%, hsl(var(--primary) / 0.25), transparent 70%),
-      radial-gradient(60% 60% at 70% 90%, hsl(var(--violet) / 0.2), transparent 70%);
+    --primary-glow: 38 98% 56%;
+    /* Teal = medical/product identity */
+    --medical: 178 70% 32%;
+    --medical-foreground: 0 0% 100%;
+    --secondary: 175 45% 93%;
+    --secondary-foreground: 195 45% 16%;
+    --muted: 180 25% 95%;
+    --muted-foreground: 195 12% 38%;
+    --accent: 35 100% 90%;
+    --accent-foreground: 24 80% 30%;
+    --sunny: 40 100% 60%;
+    --border: 180 20% 88%;
+    --ring: 24 95% 53%;
+    --gradient-hero: radial-gradient(60% 60% at 15% 20%, hsl(var(--medical) / 0.18), transparent 70%),
+      radial-gradient(50% 60% at 85% 10%, hsl(var(--primary) / 0.18), transparent 70%),
+      radial-gradient(60% 60% at 70% 90%, hsl(var(--sunny) / 0.2), transparent 70%);
     --gradient-primary: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --shadow-glow: 0 20px 50px -20px hsl(var(--primary) / 0.45);
+    --gradient-medical: linear-gradient(120deg, hsl(var(--medical)), hsl(178 60% 45%));
+    --shadow-glow: 0 20px 50px -20px hsl(var(--medical) / 0.4);
   }
 }
 
 @layer components {
   .bg-hero-vibrant { background-image: var(--gradient-hero); }
   .bg-gradient-primary { background-image: var(--gradient-primary); }
-  .text-gradient { background-image: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .text-gradient { background-image: var(--gradient-medical); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .shadow-glow { box-shadow: var(--shadow-glow); }
 }
 

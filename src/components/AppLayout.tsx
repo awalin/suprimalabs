@@ -53,7 +53,8 @@ export default function AppLayout() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <span className="hidden sm:inline text-xs text-muted-foreground">{user?.email}</span>
+            <NavLink to="/account" className="hidden sm:inline text-xs text-muted-foreground hover:text-foreground">{user?.email}</NavLink>
+            <NavLink to="/account" className="sm:hidden text-xs text-muted-foreground">Account</NavLink>
             <Button variant="ghost" size="sm" onClick={signOut} aria-label="Sign out">
               <LogOut className="h-4 w-4" />
             </Button>
@@ -63,6 +64,12 @@ export default function AppLayout() {
 
       <main className="container py-6 pb-24">
         <Outlet />
+        <footer className="mt-12 border-t pt-4 text-xs text-muted-foreground flex flex-wrap gap-x-4 gap-y-1">
+          <span>Personal wellness tool, not a medical device. Not medical advice. In an emergency, call 911.</span>
+          <NavLink to="/account" className="hover:text-foreground">Account & privacy</NavLink>
+          <NavLink to="/privacy" className="hover:text-foreground">Privacy</NavLink>
+          <NavLink to="/terms" className="hover:text-foreground">Terms</NavLink>
+        </footer>
       </main>
 
       <nav className="md:hidden fixed bottom-0 inset-x-0 border-t bg-card/95 backdrop-blur overflow-x-auto">

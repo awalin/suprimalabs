@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { Capacitor } from "@capacitor/core";
 import { Button } from "@/components/ui/button";
+import ContactForm from "@/components/ContactForm";
 import {
   Activity, BookOpen, Sparkles, ClipboardList, FolderOpen, Stethoscope, ArrowRight, Compass, Shield, HandHeart, Mail,
   FlaskConical, Users, Lightbulb, Microscope, Briefcase, CheckCircle2,
@@ -48,6 +50,8 @@ const milestones = [
 const initials = (n: string) => n.split(" ").map((p) => p[0]).join("").slice(0, 2).toUpperCase();
 
 export default function Home() {
+  // Inside the Google Play app, skip the company page and open the journal.
+  if (Capacitor.isNativePlatform()) return <Navigate to="/journal" replace />;
   return (
     <div className="theme-vibrant min-h-screen bg-background text-foreground">
       <header className="border-b bg-card/70 backdrop-blur sticky top-0 z-10">
@@ -57,12 +61,12 @@ export default function Home() {
             <span className="font-semibold tracking-tight">SuprimaLabs</span>
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#mission" className="hover:text-primary">Mission</a>
-            <a href="#products" className="hover:text-primary">Pulse Journal</a>
-            <a href="#approach" className="hover:text-primary">Approach</a>
-            <a href="#team" className="hover:text-primary">Team</a>
-            <a href="#careers" className="hover:text-primary">Careers</a>
-            <a href="#contact" className="hover:text-primary">Contact</a>
+            <a href="#mission" className="hover:text-medical">Mission</a>
+            <a href="#products" className="hover:text-medical">Pulse Journal</a>
+            <a href="#approach" className="hover:text-medical">Approach</a>
+            <a href="#team" className="hover:text-medical">Team</a>
+            <a href="#careers" className="hover:text-medical">Careers</a>
+            <a href="#contact" className="hover:text-medical">Contact</a>
           </nav>
           <Button asChild size="sm" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><Link to="/pulse">Explore Pulse Journal</Link></Button>
         </div>
@@ -70,11 +74,12 @@ export default function Home() {
 
       <main id="top">
         <section className="relative overflow-hidden bg-hero-vibrant">
-          <div className="container py-24 md:py-32 max-w-4xl">
-            <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-foreground mb-6">
+          <div className="container py-10 md:py-14 grid lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-12 items-center">
+            <div>
+            <p className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-sm font-medium text-accent-foreground mb-4">
               <Sparkles className="h-4 w-4" /> SuprimaLabs · Health technology
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold leading-[1.05] mb-6">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.05] mb-5">
               Your health. Your voice. <span className="text-gradient">Your power.</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mb-8">
@@ -83,7 +88,35 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><Link to="/pulse">Explore Pulse Journal <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-primary/40 hover:bg-primary/10"><a href="#mission">Our mission</a></Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full border-medical/40 hover:bg-primary/10"><a href="#mission">Our mission</a></Button>
+            </div>
+            </div>
+            <div id="products" className="rounded-3xl border bg-card p-6 md:p-7 shadow-glow space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-wide text-medical">Flagship product</p>
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-9 w-9 rounded-lg bg-medical/10 flex items-center justify-center">
+                  <Activity className="h-5 w-5 text-medical" />
+                </div>
+                <span className="text-xl font-semibold">Pulse Journal</span>
+                <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">Women's health</span>
+              </div>
+              <p className="text-muted-foreground mb-5 text-sm">
+                A health journal built for women. Women's symptoms are too often dismissed, under-researched and misdiagnosed —
+                Pulse helps you track cycles, perimenopause, pregnancy, pain and mood in your own words, spot patterns, and
+                walk into every appointment with evidence that gets you heard.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Button asChild><Link to="/pulse">Explore Pulse Journal <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {pulseFeatures.map(({ icon: Icon, t }) => (
+                <div key={t} className="rounded-xl bg-secondary p-3 text-sm font-medium flex items-center gap-2">
+                  <Icon className="h-4 w-4 text-medical shrink-0" /> {t}
+                </div>
+              ))}
+            </div>
             </div>
           </div>
         </section>
@@ -91,7 +124,7 @@ export default function Home() {
         <section id="mission" className="border-t bg-card/40">
           <div className="container py-20 grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-sm font-medium text-primary mb-3">Our mission</h2>
+              <h2 className="text-sm font-medium text-medical mb-3">Our mission</h2>
               <p className="text-2xl md:text-3xl font-semibold leading-snug">
                 Every person deserves to walk into a doctor's office with a clear picture of their own health — and walk out understanding what comes next.
               </p>
@@ -99,8 +132,8 @@ export default function Home() {
             <div className="space-y-5">
               {values.map(({ icon: Icon, t, d }) => (
                 <div key={t} className="flex gap-4">
-                  <div className="h-10 w-10 shrink-0 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-primary" />
+                  <div className="h-10 w-10 shrink-0 rounded-lg bg-medical/10 flex items-center justify-center">
+                    <Icon className="h-5 w-5 text-medical" />
                   </div>
                   <div>
                     <h3 className="font-semibold">{t}</h3>
@@ -112,41 +145,15 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="products" className="container py-20">
-          <h2 className="text-sm font-medium text-primary mb-3">Flagship product</h2>
-          <div className="rounded-3xl border bg-card p-8 md:p-10 shadow-glow grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Activity className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-xl font-semibold">Pulse Journal</span>
-                <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">Women's health</span>
-              </div>
-              <p className="text-muted-foreground mb-6">
-                A health journal built for women. Women's symptoms are too often dismissed, under-researched and misdiagnosed —
-                Pulse helps you track cycles, perimenopause, pregnancy, pain and mood in your own words, spot patterns, and
-                walk into every appointment with evidence that gets you heard.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Button asChild><Link to="/pulse">Explore Pulse Journal <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {pulseFeatures.map(({ icon: Icon, t }) => (
-                <div key={t} className="rounded-xl bg-secondary p-4 text-sm font-medium flex items-center gap-2">
-                  <Icon className="h-4 w-4 text-primary shrink-0" /> {t}
-                </div>
-              ))}
-            </div>
-          </div>
+        <section className="container py-16">
+          <h2 className="text-sm font-medium text-medical mb-3">Why women's health</h2>
           <div className="mt-6 grid md:grid-cols-3 gap-4 text-sm">
             {[
               ["Dismissed for too long", "Women wait longer for diagnosis across hundreds of conditions."],
               ["Under-researched", "Women were routinely left out of clinical trials until the 1990s."],
               ["Life stages overlooked", "Periods, pregnancy and menopause shape health but are rarely tracked together."],
             ].map(([t, d]) => (
-              <div key={t} className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+              <div key={t} className="rounded-xl border border-medical/20 bg-medical/5 p-5">
                 <div className="font-semibold mb-1">{t}</div>
                 <p className="text-muted-foreground">{d}</p>
               </div>
@@ -157,12 +164,12 @@ export default function Home() {
 
         <section id="approach" className="border-t bg-card/40">
           <div className="container py-20">
-            <h2 className="text-sm font-medium text-primary mb-3">How we work</h2>
+            <h2 className="text-sm font-medium text-medical mb-3">How we work</h2>
             <p className="text-2xl font-semibold mb-10 max-w-2xl">Research-led, patient-tested, evidence-linked.</p>
             <div className="grid md:grid-cols-3 gap-6">
               {approach.map(({ icon: Icon, t, d }) => (
                 <div key={t} className="rounded-xl border bg-card p-6">
-                  <Icon className="h-6 w-6 text-primary mb-3" />
+                  <Icon className="h-6 w-6 text-medical mb-3" />
                   <h3 className="font-semibold mb-1">{t}</h3>
                   <p className="text-sm text-muted-foreground">{d}</p>
                 </div>
@@ -171,7 +178,7 @@ export default function Home() {
             <div className="mt-10 grid md:grid-cols-3 gap-4">
               {milestones.map(([k, d]) => (
                 <div key={k} className="flex gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-5 w-5 text-medical shrink-0 mt-0.5" />
                   <div><div className="font-semibold">{k}</div><p className="text-sm text-muted-foreground">{d}</p></div>
                 </div>
               ))}
@@ -180,18 +187,18 @@ export default function Home() {
         </section>
 
         <section id="team" className="container py-20">
-          <h2 className="text-sm font-medium text-primary mb-3">The people behind it</h2>
+          <h2 className="text-sm font-medium text-medical mb-3">The people behind it</h2>
           <p className="text-2xl font-semibold mb-10 max-w-2xl">A small team of researchers, clinicians, designers and engineers who care about patient voice.</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((p) => (
               <div key={p.name} className="rounded-xl border bg-card p-6">
-                <div className="h-14 w-14 rounded-full bg-primary/10 text-primary flex items-center justify-center font-semibold mb-4">
+                <div className="h-14 w-14 rounded-full bg-medical/10 text-medical flex items-center justify-center font-semibold mb-4">
                   {p.open ? <Users className="h-6 w-6" /> : initials(p.name)}
                 </div>
                 <h3 className="font-semibold">{p.name}</h3>
-                <p className="text-sm text-primary mb-2">{p.role}</p>
+                <p className="text-sm text-medical mb-2">{p.role}</p>
                 <p className="text-sm text-muted-foreground">{p.bio}</p>
-                {p.open && <a href="#careers" className="mt-3 inline-block text-xs font-medium text-primary hover:underline">Joining soon · We're hiring</a>}
+                {p.open && <a href="#careers" className="mt-3 inline-block text-xs font-medium text-medical hover:underline">Joining soon · We're hiring</a>}
               </div>
             ))}
           </div>
@@ -208,12 +215,12 @@ export default function Home() {
         <section id="careers" className="border-t bg-card/40">
           <div className="container py-20 grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-sm font-medium text-primary mb-3">Careers</h2>
+              <h2 className="text-sm font-medium text-medical mb-3">Careers</h2>
               <p className="text-2xl font-semibold mb-3">Help women get heard.</p>
               <p className="text-muted-foreground">We're looking for a women's health clinician, an AI engineer and a product designer who want their work to matter.</p>
             </div>
             <div className="flex md:justify-end">
-              <Button asChild size="lg" variant="outline"><a href="mailto:hello@suprimalabs.com?subject=Careers"><Briefcase className="h-4 w-4 mr-2" /> Get in touch</a></Button>
+              <Button asChild size="lg" variant="outline"><a href="#contact"><Briefcase className="h-4 w-4 mr-2" /> Get in touch</a></Button>
             </div>
           </div>
         </section>
@@ -221,13 +228,13 @@ export default function Home() {
         <section id="contact" className="bg-hero-vibrant"><div className="container py-20 text-center max-w-2xl">
           <h2 className="text-3xl font-semibold mb-4">Let's talk</h2>
           <p className="text-muted-foreground mb-8">Partners, clinicians, researchers and investors — we'd love to hear from you.</p>
-          <Button asChild size="lg" className="rounded-full bg-gradient-primary shadow-glow hover:opacity-90"><a href="mailto:hello@suprimalabs.com"><Mail className="h-4 w-4 mr-2" /> hello@suprimalabs.com</a></Button>
+          <ContactForm />
         </div></section>
       </main>
 
       <footer className="border-t">
         <div className="container py-8 flex flex-col sm:flex-row justify-between gap-2 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} SuprimaLabs. All rights reserved. · <Link to="/pulse" className="hover:text-foreground">Pulse Journal</Link></span>
+          <span>© {new Date().getFullYear()} SuprimaLabs. All rights reserved. · <Link to="/pulse" className="hover:text-foreground">Pulse Journal</Link> · <Link to="/privacy" className="hover:text-foreground">Privacy</Link> · <Link to="/terms" className="hover:text-foreground">Terms</Link></span>
           <span>Our products do not provide medical advice. In an emergency, call 911.</span>
         </div>
       </footer>
