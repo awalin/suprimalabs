@@ -4,8 +4,9 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-// `--mode site` builds only the marketing page (src/site.tsx) for GitHub Pages,
-// so none of the demo app is reachable from the published site.
+// `--mode site` builds the marketing site (src/site.tsx) for GitHub Pages,
+// which includes the Home and Pulse Journal showcase pages but not the
+// authenticated demo app.
 export default defineConfig(({ mode }) => ({
   build: mode === "site" ? { outDir: "dist-site", rollupOptions: { input: "site.html" } } : {},
   server: {
